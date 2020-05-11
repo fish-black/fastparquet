@@ -121,7 +121,7 @@ public class FastParquetUtils {
 			return null;
 		}
 
-		byte[] data = new byte[1];
+		byte[] data;
 		ByteArrayOutputStream buf = null;
 		try {
 			int read;
@@ -246,13 +246,13 @@ public class FastParquetUtils {
      */
     public static void copyCharacterStream(InputStream is, OutputStream os, int linestoSkip, int nRows) throws IOException
     {
-    	BufferedReader br = new BufferedReader(new InputStreamReader(is),1024*1024);
+    	BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"),1024*1024);
     	for(int i = 0; i < linestoSkip; ++i)
     	{
     		br.readLine(); //skip the line
     	}
     	
-    	PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(os), 1024*1024),false);
+    	PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(os, "UTF-8"), 1024*1024),false);
     	String line = null;
     	int rowNum = 0;
     	while((line = br.readLine()) != null)
@@ -675,11 +675,11 @@ public class FastParquetUtils {
 
 	}
 
-	public static String applyXslt(Document xmlDoc, InputStream xsltIs) throws TransformerException {
+	public static String applyXslt(Document xmlDoc, InputStream xsltIs) throws TransformerException, UnsupportedEncodingException {
 		return applyXslt(new DOMSource(xmlDoc), xsltIs);
 	}
 
-	public static String applyXslt(InputStream xmlIs, InputStream xsltIs) throws TransformerException {
+	public static String applyXslt(InputStream xmlIs, InputStream xsltIs) throws TransformerException, UnsupportedEncodingException {
 		return applyXslt(new StreamSource(xmlIs), xsltIs);
 	}
 
@@ -690,13 +690,13 @@ public class FastParquetUtils {
 	 * @return the transformed XML as a String
 	 * @throws TransformerException
 	 */
-	public static String applyXslt(Source source, InputStream xsltIs) throws TransformerException {
+	public static String applyXslt(Source source, InputStream xsltIs) throws TransformerException, UnsupportedEncodingException {
 		TransformerFactory factory = TransformerFactory.newInstance();
 		Transformer transformer = factory.newTransformer(new StreamSource(xsltIs));
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		StreamResult result = new StreamResult(baos);
 		transformer.transform(source, result);
-		String transformedXml = baos.toString();
+		String transformedXml = baos.toString("UTF-8");
 		return transformedXml;
 	}
 

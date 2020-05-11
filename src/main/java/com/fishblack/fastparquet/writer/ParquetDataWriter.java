@@ -4,6 +4,7 @@ import com.fishblack.fastparquet.common.ConvertResult;
 import com.fishblack.fastparquet.common.FieldMetadata;
 import com.fishblack.fastparquet.common.ParquetConversionException;
 import com.fishblack.fastparquet.common.SchemaConverter;
+import com.fishblack.fastparquet.utils.FastParquetUtils;
 import com.fishblack.fastparquet.utils.ParquetAvroUtils;
 import org.apache.avro.Conversions;
 import org.apache.avro.Schema;
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 import static com.fishblack.fastparquet.common.ConvertResult.AUDIT_CONVERT_RESULT_KEY;
 import static com.fishblack.fastparquet.common.ConvertResult.AUDIT_DETAIL_MESSAGE_KEY;
@@ -36,7 +38,8 @@ import static com.fishblack.fastparquet.common.FastParquetConstants.PARQUET_VERS
  * Clients should call the close() method when finished writing.
  */
 public class ParquetDataWriter implements Closeable {
-	
+	private static final Logger logger = Logger.getLogger(ParquetDataWriter.class.getName());
+
 	private final String parquetPath;
 	private List<FieldMetadata> fields;
 	private Schema sc;
@@ -109,7 +112,6 @@ public class ParquetDataWriter implements Closeable {
 
 		Configuration conf = new Configuration();
 		
-		
 		//turn off writing .crc temp files
 		FileSystem fs = FileSystem.get(conf);
 		fs.setWriteChecksum(false);
@@ -121,8 +123,11 @@ public class ParquetDataWriter implements Closeable {
 		builder.withDataModel(model);
 		
 		File parquetFile = new File(parquetPath);
-		if(parquetFile.exists())
-			parquetFile.delete();
+		if(parquetFile.exists()) {
+			if (!parquetFile.delete()){
+				logger.warning("Parquet file has not been deleted.");
+			}
+		}
 		
 		writer = builder.build();
 		writeSupport = builder.getWriteSupport();

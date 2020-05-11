@@ -87,7 +87,8 @@ public class ParquetDataReaderTest {
 				records = pin.next(100);
 				builder.append(toCSVString(records));
 			} finally {
-				pin.close();
+				if (pin != null)
+					pin.close();
 			}
 			
 			//compare the contents read from the new parquet file with expected result

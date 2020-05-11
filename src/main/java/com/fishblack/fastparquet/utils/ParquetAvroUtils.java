@@ -35,22 +35,22 @@ public class ParquetAvroUtils {
 	public static final String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	public static final String TIMESTAMP_FORMAT_FOR_PUBLISHED = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-	public static DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(DATE_FORMAT).withZoneUTC();
-	public static DateTimeFormatter timestampFormatter = DateTimeFormat.forPattern(TIMESTAMP_FORMAT).withZoneUTC();
-	public static DateTimeFormatter timestampFormatterPublished = DateTimeFormat.forPattern(TIMESTAMP_FORMAT_FOR_PUBLISHED).withZoneUTC();
+	public static final DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(DATE_FORMAT).withZoneUTC();
+	public static final DateTimeFormatter timestampFormatter = DateTimeFormat.forPattern(TIMESTAMP_FORMAT).withZoneUTC();
+	public static final DateTimeFormatter timestampFormatterPublished = DateTimeFormat.forPattern(TIMESTAMP_FORMAT_FOR_PUBLISHED).withZoneUTC();
 	public static final String LINE_SEPARATOR = "\n";
 	public static final String DEFAULT_ENCODING = "utf-8";
 	public static final char ESCAPE_CHARACTER = (char)0x0;
 	public static final char COMMA_CHARACTER = ',';
 	public static final String EMPTY_STRING = "";
 	public static final Pattern POINT_ZERO_PATTERN = Pattern.compile("\\.0$");
-	public static final String[] SUPPORTED_COLUMN_DATA_TYPE = {"INT32", "UTF8", "DOUBLE", "DECIMAL", "TIMESTAMP_MILLIS", "DATE", "TIME"};
+	private static final String[] SUPPORTED_COLUMN_DATA_TYPE = {"INT32", "UTF8", "DOUBLE", "DECIMAL", "TIMESTAMP_MILLIS", "DATE", "TIME"};
 	
 	//used for formatting, remove the scientific notation
-	public static NumberFormat numberFormatter = new DecimalFormat(); 
+	public static final NumberFormat numberFormatter = new DecimalFormat();
 	
 	//used for parsing double, handles both with or without comma
-	public static NumberFormat numberParser = new DecimalFormat(); 
+	public static final NumberFormat numberParser = new DecimalFormat();
 	
 	static {
 		numberFormatter.setGroupingUsed(false);

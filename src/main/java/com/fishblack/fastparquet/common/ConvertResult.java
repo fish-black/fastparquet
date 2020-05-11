@@ -120,7 +120,7 @@ public class ConvertResult {
     /**
      * Statistic for runtime conversion result at this moment
      */
-    public class InstantStatistic {
+    public static class InstantStatistic {
         private long failureCount;
         private double failurePercentage;
 

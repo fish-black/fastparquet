@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasetImportOptions xmlns:ds="com.fishblack.fastparquet/typeoptionxml/v1">
+    <ds:tables>
+        <ds:table name="all_types_timezone2" totalRowNumber="9">
+            <ds:columns>
+                <ds:column>
+                    <ds:name>id_int</ds:name>
+                    <ds:datatype>integer</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>name_string</ds:name>
+                    <ds:datatype>varchar(64)</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>age_number</ds:name>
+                    <ds:datatype>number</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>sales_number</ds:name>
+                    <ds:datatype>number(10,3)</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>revenue_number</ds:name>
+                    <ds:datatype>number(10)</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>rate_double</ds:name>
+                    <ds:datatype>double</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>birth_date</ds:name>
+                    <ds:datatype>date</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>last_modified_timestamp</ds:name>
+                    <ds:datatype>timestamp</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>created_time</ds:name>
+                    <ds:datatype>time</ds:datatype>
+                </ds:column>
+            </ds:columns>
+        </ds:table>
+    </ds:tables>
+    <ds:prepareTables>
+        <ds:table name="all_types_timezone2" transformed="true">
+            <ds:columns>
+                <ds:column>
+                    <ds:name>id_int</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>name_string</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>age_number</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>sales_number</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>revenue_number</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>rate_double</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>birth_date</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>last_modified_timestamp</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>created_time</ds:name>
+                </ds:column>
+                <ds:column transform="data-prep">
+                    <ds:name>birth_date Quarter of Year 1</ds:name>
+                    <ds:datatype>date</ds:datatype>
+                </ds:column>
+                <ds:column transform="data-prep">
+                    <ds:name>rate_double_Part_2</ds:name>
+                    <ds:datatype>number</ds:datatype>
+                </ds:column>
+            </ds:columns>
+            <ds:transforms>
+                <ds:name>Root Transform c50c9ac7-b619-4cba-ae16-7122e87ea8e1</ds:name>
+                <ds:id>RootTransform_c50c9ac7-b619-4cba-ae16-7122e87ea8e1</ds:id>
+                <ds:transformAction>
+                    <ds:name>Transform 4033bcba-0587-4b04-a4f9-7a111f31c6eb</ds:name>
+                    <ds:id>TransformAction_4033bcba-0587-4b04-a4f9-7a111f31c6eb</ds:id>
+                    <ds:columns>
+                        <ds:column>
+                            <ds:name>birth_date Quarter of Year 1</ds:name>
+                        </ds:column>
+                    </ds:columns>
+                    <ds:steps>
+                        <ds:step>
+                            <ds:id>TransformStep_4033bcba-0587-4b04-a4f9-7a111f31c6eb</ds:id>
+                            <ds:expr>ExtractQuarterOfYear("birth_date")</ds:expr>
+                        </ds:step>
+                    </ds:steps>
+                </ds:transformAction>
+                <ds:transformAction>
+                    <ds:name>Transform 19b518a5-1239-4366-8b4d-2464152c579b</ds:name>
+                    <ds:id>TransformAction_19b518a5-1239-4366-8b4d-2464152c579b</ds:id>
+                    <ds:columns>
+                        <ds:column>
+                            <ds:name>rate_double_Part_2</ds:name>
+                        </ds:column>
+                    </ds:columns>
+                    <ds:steps>
+                        <ds:step>
+                            <ds:id>TransformStep_19b518a5-1239-4366-8b4d-2464152c579b</ds:id>
+                            <ds:expr>ExtractRegex("rate_double", '.*?\.(.*)', 'KEEP_FIRST_MATCH_FIRST_GROUP')</ds:expr>
+                        </ds:step>
+                    </ds:steps>
+                </ds:transformAction>
+            </ds:transforms>
+        </ds:table>
+    </ds:prepareTables>
+    <ds:outputTables>
+        <ds:table disableXSACache="false" name="all_types_timezone2">
+            <ds:sourcetable type="input">all_types_timezone2</ds:sourcetable>
+            <ds:columns>
+                <ds:column exclude="false">
+                    <ds:name>id_long</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>id_long</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>number</ds:datatype>
+                    <ds:sourceexpr>"id_long"</ds:sourceexpr>
+                    <ds:aggr_rule>sum</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>name_string</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>name_string</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>varchar(9)</ds:datatype>
+                    <ds:sourceexpr>"name_string"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>age_int</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>age_int</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>number</ds:datatype>
+                    <ds:sourceexpr>"age_int"</ds:sourceexpr>
+                    <ds:aggr_rule>sum</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>sales_number</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>sales_number</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>number</ds:datatype>
+                    <ds:sourceexpr>"sales_number"</ds:sourceexpr>
+                    <ds:aggr_rule>sum</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>rate_double</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>rate_double</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>number</ds:datatype>
+                    <ds:sourceexpr>"rate_double"</ds:sourceexpr>
+                    <ds:aggr_rule>sum</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>rate_double_Part_2</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>rate_double_Part_2</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>number</ds:datatype>
+                    <ds:sourceexpr>"rate_double_Part_2"</ds:sourceexpr>
+                    <ds:aggr_rule>sum</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>birth_date</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>birth_date</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>date</ds:datatype>
+                    <ds:sourceexpr>"birth_date"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>birth_date Quarter of Year 1</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>birth_date Quarter of Year 1</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>date</ds:datatype>
+                    <ds:sourceexpr>"birth_date Quarter of Year 1"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>last_modified_timestamp</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>last_modified_timestamp</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>timestamp</ds:datatype>
+                    <ds:sourceexpr>"last_modified_timestamp"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>created_time</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>created_time</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>time</ds:datatype>
+                    <ds:sourceexpr>"created_time"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+            </ds:columns>
+        </ds:table>
+    </ds:outputTables>
+    <ds:uiOptions></ds:uiOptions>
+    <ds:version>v1</ds:version>
+</ds:datasetImportOptions>

@@ -1,0 +1,114 @@
+{
+  "type" : "record",
+  "name" : "GenericRecord",
+  "namespace" : "fastparquet",
+  "fields" : [ {
+    "name" : "f0",
+    "type" : [ "null", {
+      "type" : "fixed",
+      "name" : "f0_type",
+      "namespace" : "",
+      "doc" : "fastparquet",
+      "size" : 16,
+      "isDefaultPrecision" : "true",
+      "isDefaultScale" : "true",
+      "logicalType" : "decimal",
+      "precision" : 38,
+      "scale" : 12
+    } ],
+    "default" : null
+  }, {
+    "name" : "f1",
+    "type" : [ "null", "string" ],
+    "default" : null
+  }, {
+    "name" : "f2",
+    "type" : [ "null", {
+      "type" : "fixed",
+      "name" : "f2_type",
+      "namespace" : "",
+      "doc" : "fastparquet",
+      "size" : 16,
+      "isDefaultPrecision" : "true",
+      "isDefaultScale" : "true",
+      "logicalType" : "decimal",
+      "precision" : 38,
+      "scale" : 12
+    } ],
+    "default" : null
+  }, {
+    "name" : "f3",
+    "type" : [ "null", {
+      "type" : "fixed",
+      "name" : "f3_type",
+      "namespace" : "",
+      "doc" : "fastparquet",
+      "size" : 16,
+      "isDefaultPrecision" : "true",
+      "isDefaultScale" : "true",
+      "logicalType" : "decimal",
+      "precision" : 38,
+      "scale" : 12
+    } ],
+    "default" : null
+  }, {
+    "name" : "f4",
+    "type" : [ "null", {
+      "type" : "fixed",
+      "name" : "f4_type",
+      "namespace" : "",
+      "doc" : "fastparquet",
+      "size" : 16,
+      "isDefaultPrecision" : "true",
+      "isDefaultScale" : "true",
+      "logicalType" : "decimal",
+      "precision" : 38,
+      "scale" : 12
+    } ],
+    "default" : null
+  }, {
+    "name" : "f5",
+    "type" : [ "null", {
+      "type" : "int",
+      "logicalType" : "date"
+    } ],
+    "default" : null
+  }, {
+    "name" : "f6",
+    "type" : [ "null", {
+      "type" : "long",
+      "logicalType" : "timestamp-millis"
+    } ],
+    "default" : null
+  }, {
+    "name" : "f7",
+    "type" : [ "null", {
+      "type" : "long",
+      "logicalType" : "timestamp-millis",
+      "actualType" : "time"
+    } ],
+    "default" : null
+  }, {
+    "name" : "f8",
+    "type" : [ "null", {
+      "type" : "int",
+      "logicalType" : "date"
+    } ],
+    "default" : null
+  }, {
+    "name" : "f9",
+    "type" : [ "null", {
+      "type" : "fixed",
+      "name" : "f9_type",
+      "namespace" : "",
+      "doc" : "fastparquet",
+      "size" : 16,
+      "isDefaultPrecision" : "true",
+      "isDefaultScale" : "true",
+      "logicalType" : "decimal",
+      "precision" : 38,
+      "scale" : 12
+    } ],
+    "default" : null
+  } ]
+}

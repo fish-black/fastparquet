@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ds:datasetImportOptions xmlns:ds="com.fishblack.fastparquet/typeoptionxml/v1">
+	<ds:tables>
+		<ds:table name="Sheet1" totalRowNumber="27">
+			<ds:columns>
+				<ds:column>
+					<ds:name>Year</ds:name>
+					<ds:datatype>varchar(6)</ds:datatype>
+				</ds:column>
+				<ds:column>
+					<ds:name>Brand</ds:name>
+					<ds:datatype>varchar(12)</ds:datatype>
+				</ds:column>
+				<ds:column>
+					<ds:name>Region</ds:name>
+					<ds:datatype>varchar(45)</ds:datatype>
+				</ds:column>
+				<ds:column>
+					<ds:name>Revenue</ds:name>
+					<ds:datatype>double</ds:datatype>
+				</ds:column>
+				<ds:column>
+					<ds:name>Billed Quantity</ds:name>
+					<ds:datatype>double</ds:datatype>
+				</ds:column>
+				<ds:column>
+					<ds:name>Target Revenue</ds:name>
+					<ds:datatype>double</ds:datatype>
+				</ds:column>
+				<ds:column>
+					<ds:name>Target Quantity</ds:name>
+					<ds:datatype>number(10,-2)</ds:datatype>
+				</ds:column>
+			</ds:columns>
+		</ds:table>
+	</ds:tables>
+	<ds:prepareTables>
+		<ds:table name="Sheet1" transformed="true">
+			<ds:columns>
+				<ds:column>
+					<ds:name>Year</ds:name>
+				</ds:column>
+				<ds:column>
+					<ds:name>Brand</ds:name>
+				</ds:column>
+				<ds:column>
+					<ds:name>Region</ds:name>
+				</ds:column>
+				<ds:column>
+					<ds:name>Revenue</ds:name>
+				</ds:column>
+				<ds:column>
+					<ds:name>Billed Quantity</ds:name>
+				</ds:column>
+				<ds:column>
+					<ds:name>Target Revenue</ds:name>
+				</ds:column>
+				<ds:column>
+					<ds:name>Target Quantity</ds:name>
+				</ds:column>
+					<ds:column transform="bis">
+					<ds:name>Description Split 1</ds:name>
+					<ds:datatype>varchar(15)</ds:datatype>
+				</ds:column>
+			</ds:columns>
+			<ds:transforms>
+				<ds:name>SingleTransform</ds:name>
+				<ds:id>SingleTransformID</ds:id>
+				<ds:transformAction>
+					<ds:name>Transform Action Name</ds:name>
+					<ds:id>Transform Action ID</ds:id>
+					<ds:columns>
+						<ds:column>
+							<ds:name>Description Split 1</ds:name>
+						</ds:column>
+					</ds:columns>
+					<ds:steps>
+						<ds:step>
+							<ds:id>Transform Step ID</ds:id>
+							<ds:expr>CASE WHEN POSITION(' ', "Description") &gt; 0 THEN  SUBSTRING("Description",0, POSITION(' ', "Description")) ELSE "Description" END</ds:expr>
+						</ds:step>
+					</ds:steps>
+				</ds:transformAction>
+			</ds:transforms>	
+			
+		</ds:table>
+	</ds:prepareTables>
+	<ds:outputTables>
+		<ds:table name="Sheet1">
+			<ds:columns>
+				<ds:column>
+					<ds:name>Year</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Year</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Year</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>varchar(6)</ds:datatype>
+					<ds:sourceexpr>"Year"</ds:sourceexpr>
+					<ds:aggr_rule>none</ds:aggr_rule>
+				</ds:column>
+				<ds:column>
+					<ds:name>Brand</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Brand</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Brand</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>varchar(12)</ds:datatype>
+					<ds:sourceexpr>"Brand"</ds:sourceexpr>
+					<ds:aggr_rule>none</ds:aggr_rule>
+				</ds:column>
+				<ds:column>
+					<ds:name>Region</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Region</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Region</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>varchar(45)</ds:datatype>
+					<ds:sourceexpr>"Region"</ds:sourceexpr>
+					<ds:aggr_rule>none</ds:aggr_rule>
+				</ds:column>
+				<ds:column>
+					<ds:name>Revenue</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Revenue</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Revenue</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>double</ds:datatype>
+					<ds:sourceexpr>"Revenue"</ds:sourceexpr>
+					<ds:aggr_rule>sum</ds:aggr_rule>
+				</ds:column>
+				<ds:column>
+					<ds:name>Billed Quantity</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Billed Quantity</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Billed Quantity</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>double</ds:datatype>
+					<ds:sourceexpr>"Billed Quantity"</ds:sourceexpr>
+					<ds:aggr_rule>sum</ds:aggr_rule>
+				</ds:column>
+				<ds:column>
+					<ds:name>Target Revenue</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Target Revenue</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Target Revenue</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>double</ds:datatype>
+					<ds:sourceexpr>"Target Revenue"</ds:sourceexpr>
+					<ds:aggr_rule>sum</ds:aggr_rule>
+				</ds:column>
+				<ds:column>
+					<ds:name>Target Quantity</ds:name>
+					<ds:display_names>
+						<ds:display_name>
+							<ds:name>Target Quantity</ds:name>
+							<ds:locale>sys</ds:locale>
+						</ds:display_name>
+						<ds:display_name>
+							<ds:name>Target Quantity</ds:name>
+							<ds:locale>en-US</ds:locale>
+						</ds:display_name>
+					</ds:display_names>
+					<ds:datatype>number(10,-2)</ds:datatype>
+					<ds:sourceexpr>"Target Quantity"</ds:sourceexpr>
+					<ds:aggr_rule>sum</ds:aggr_rule>
+				</ds:column>
+			</ds:columns>
+		</ds:table>
+	</ds:outputTables>
+	<ds:uiOptions />
+	<ds:version>v1</ds:version>
+</ds:datasetImportOptions>

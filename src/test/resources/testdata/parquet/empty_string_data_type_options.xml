@@ -1,0 +1,83 @@
+<ds:datasetImportOptions xmlns:ds="com.fishblack.fastparquet/typeoptionxml/v1">
+    <ds:tables>
+        <ds:table name="Data" totalRowNumber="-1">
+            <ds:columns>
+                <ds:column>
+                    <ds:name>1</ds:name>
+                    <ds:datatype>number</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>data</ds:name>
+                    <ds:datatype>varchar(6)</ds:datatype>
+                </ds:column>
+                <ds:column>
+                    <ds:name>SpaceString</ds:name>
+                    <ds:datatype>varchar(11)</ds:datatype>
+                </ds:column>
+            </ds:columns>
+            <ds:delimiter>comma</ds:delimiter>
+            <ds:thousandSeparator>comma</ds:thousandSeparator>
+            <ds:decimalSeparator>period</ds:decimalSeparator>
+            <ds:headerRow>true</ds:headerRow>
+        </ds:table>
+    </ds:tables>
+    <ds:prepareTables>
+        <ds:table name="Data" transformed="true">
+            <ds:columns>
+                <ds:column>
+                    <ds:name>1</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>SpaceString</ds:name>
+                </ds:column>
+                <ds:column>
+                    <ds:name>data</ds:name>
+                </ds:column>
+            </ds:columns>
+        </ds:table>
+    </ds:prepareTables>
+    <ds:outputTables>
+        <ds:table name="Data">
+            <ds:columns>
+                <ds:column exclude="false">
+                    <ds:name>1</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>1</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>number</ds:datatype>
+                    <ds:sourceexpr>"1"</ds:sourceexpr>
+                    <ds:aggr_rule>sum</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>data</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>data</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>varchar(6)</ds:datatype>
+                    <ds:sourceexpr>"data"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+                <ds:column exclude="false">
+                    <ds:name>SpaceString</ds:name>
+                    <ds:display_names>
+                        <ds:display_name>
+                            <ds:name>SpaceString</ds:name>
+                            <ds:locale>sys</ds:locale>
+                        </ds:display_name>
+                    </ds:display_names>
+                    <ds:datatype>varchar(11)</ds:datatype>
+                    <ds:sourceexpr>"SpaceString"</ds:sourceexpr>
+                    <ds:aggr_rule>none</ds:aggr_rule>
+                </ds:column>
+            </ds:columns>
+        </ds:table>
+    </ds:outputTables>
+    <ds:uiOptions></ds:uiOptions>
+    <ds:version>v1</ds:version>
+</ds:datasetImportOptions>

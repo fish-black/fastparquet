@@ -3,7 +3,7 @@ package com.fishblack.fastparquet;
 import com.fishblack.fastparquet.common.FieldMetadata;
 import com.fishblack.fastparquet.common.ParquetConversionException;
 import com.fishblack.fastparquet.reader.ParquetDataReader;
-import com.fishblack.fastparquet.utils.FastParquetUtils;
+import com.fishblack.fastparquet.utils.Utils;
 import com.fishblack.fastparquet.utils.ParquetAvroUtils;
 import com.fishblack.fastparquet.utils.ParquetConverter;
 import com.fishblack.fastparquet.writer.ParquetDataWriter;
@@ -25,9 +25,7 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import javax.ws.rs.ProcessingException;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -105,7 +103,7 @@ public class ParquetDataWriterTest {
 			File crcTempFile = new File(tmpDir + fs + "." + parquetFilename + ".crc");
 			Assert.assertFalse(crcTempFile.exists());
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -159,7 +157,7 @@ public class ParquetDataWriterTest {
 				}
 			}
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -346,7 +344,7 @@ public class ParquetDataWriterTest {
 			Assert.assertEquals("  ", records[3][1].toString());
 
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 

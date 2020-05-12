@@ -3,7 +3,7 @@ package com.fishblack.fastparquet;
 import com.fishblack.fastparquet.common.FieldMetadata;
 import com.fishblack.fastparquet.common.ParquetConversionException;
 import com.fishblack.fastparquet.reader.ParquetDataReader;
-import com.fishblack.fastparquet.utils.FastParquetUtils;
+import com.fishblack.fastparquet.utils.Utils;
 import com.fishblack.fastparquet.utils.ParquetAvroUtils;
 import com.fishblack.fastparquet.writer.ParquetDataWriter;
 import com.opencsv.CSVParserBuilder;
@@ -100,7 +100,7 @@ public class ParquetDataReaderTest {
 			Assert.assertEquals(expected, actual);
 			
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -152,7 +152,7 @@ public class ParquetDataReaderTest {
 				}
 			}
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -209,7 +209,7 @@ public class ParquetDataReaderTest {
 			}
 			
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 

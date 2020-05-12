@@ -2,7 +2,7 @@ package com.fishblack.fastparquet;
 
 import com.fishblack.fastparquet.common.FieldMetadata;
 import com.fishblack.fastparquet.common.ParquetConversionException;
-import com.fishblack.fastparquet.utils.FastParquetUtils;
+import com.fishblack.fastparquet.utils.Utils;
 import com.fishblack.fastparquet.utils.ParquetAvroUtils;
 import com.fishblack.fastparquet.utils.ParquetConverter;
 import junit.framework.Assert;
@@ -52,7 +52,7 @@ public class ParquetWithSchemaTest {
 			
 			Assert.assertEquals(expected, actual);
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -76,7 +76,7 @@ public class ParquetWithSchemaTest {
 			
 			Assert.assertEquals(expected, actual);
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class ParquetWithSchemaTest {
 			
 			Assert.assertEquals(expected, actual);
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class ParquetWithSchemaTest {
 			Assert.assertEquals("value1", expectedMetadata.get("otherKey"));
 			
 		} finally {
-			FastParquetUtils.deleteWithWarning(new File(parquetPath));
+			Utils.deleteWithWarning(new File(parquetPath));
 		}
 	}
 

@@ -84,8 +84,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-public class FastParquetUtils {
-	private static final Logger logger = Logger.getLogger(FastParquetUtils.class.getName());
+public class Utils {
+	private static final Logger logger = Logger.getLogger(Utils.class.getName());
 	
     public static final String DATE_FORMAT = "EEE, d MMM yyyy HH:mm:ss z";
     public static final String TIMEZONE_GMT = "GMT";
@@ -570,7 +570,7 @@ public class FastParquetUtils {
     	
     	InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
     	if (is == null) {
-    		is = FastParquetUtils.class.getResourceAsStream(name);
+    		is = Utils.class.getResourceAsStream(name);
     	}
     	return is;
     }
@@ -634,7 +634,7 @@ public class FastParquetUtils {
 		} catch (IOException e) {
 			logger.log(Level.WARNING, e.getClass().getName() + ": " + e.getMessage());
 		} finally {
-			FastParquetUtils.close(inputStream);
+			Utils.close(inputStream);
 		}
 		return "";
 	}

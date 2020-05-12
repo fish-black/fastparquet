@@ -4,7 +4,6 @@ import com.fishblack.fastparquet.common.ConvertResult;
 import com.fishblack.fastparquet.common.FieldMetadata;
 import com.fishblack.fastparquet.common.ParquetConversionException;
 import com.fishblack.fastparquet.common.SchemaConverter;
-import com.fishblack.fastparquet.utils.FastParquetUtils;
 import com.fishblack.fastparquet.utils.ParquetAvroUtils;
 import org.apache.avro.Conversions;
 import org.apache.avro.Schema;

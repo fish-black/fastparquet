@@ -4,7 +4,7 @@ import com.fishblack.fastparquet.common.ConvertResult;
 import com.fishblack.fastparquet.common.FieldMetadata;
 import com.fishblack.fastparquet.common.ParquetConversionException;
 import com.fishblack.fastparquet.reader.ParquetDataReader;
-import com.fishblack.fastparquet.utils.FastParquetUtils;
+import com.fishblack.fastparquet.utils.Utils;
 import com.fishblack.fastparquet.utils.ParquetAvroUtils;
 import com.fishblack.fastparquet.utils.ParquetConverter;
 import com.fishblack.fastparquet.writer.ParquetDataWriter;
@@ -50,7 +50,7 @@ public class ParquetConvertAuditTest {
 
             String resultCode = expectedMetadata.get(ConvertResult.AUDIT_CONVERT_RESULT_KEY);
             String messages = expectedMetadata.get(ConvertResult.AUDIT_DETAIL_MESSAGE_KEY);
-            ConvertResult result = FastParquetUtils.objectMapper.readValue(messages, ConvertResult.class);
+            ConvertResult result = Utils.objectMapper.readValue(messages, ConvertResult.class);
 
             Assert.assertEquals(ConvertResult.Result.PARTIAL_SUCCESS.toString(), resultCode);
             Assert.assertEquals(2, result.getFailureCount());
@@ -58,7 +58,7 @@ public class ParquetConvertAuditTest {
             Assert.assertTrue(result.getErrors().containsKey(11L));
             Assert.assertTrue(result.getErrors().get(11L).containsKey("f5"));
         } finally {
-            FastParquetUtils.deleteWithWarning(new File(parquetPath));
+            Utils.deleteWithWarning(new File(parquetPath));
         }
     }
 
